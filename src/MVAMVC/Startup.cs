@@ -28,7 +28,8 @@ namespace MVAMVC
             if (env.IsDevelopment())
             {
                 // This will push telemetry data through Application Insights pipeline faster, allowing you to view results immediately.
-                builder.AddApplicationInsightsSettings(developerMode: true);
+                builder.AddApplicationInsightsSettings(developerMode: true)
+                .AddUserSecrets();
             }
             Configuration = builder.Build();
         }
