@@ -1,0 +1,87 @@
+﻿@model Person
+
+@{
+    ViewData["Title"] = "About";
+}
+<h2>@ViewData["Title"].</h2>
+<h3>@ViewData["Message"]</h3>
+
+<p>I'm in the Shared Layout stuffs.</p>
+
+@for (int i = 0; i < 2; i++)
+{
+    <blockquote cite=@ViewData["FooCite"]>@ViewData["FooMessage"]</blockquote>
+
+}
+
+<ul>
+    <li>First: @Model.FirstName</li>
+    <li>Last: @Model.LastName</li>
+    <li>Birthday: @Model.Birthday.ToString("D")</li>
+</ul>
+
+<form asp-controller="Home" asp-action="About" method="post">
+    <div class="text-danger" asp-validation-summary="ValidationSummary.All"></div>
+    <div class="form-group">
+        <label for="firstName">First: </label>
+        <input asp-for="FirstName" class="form-control" type="text" placeholder="First"/>
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="LastName">Last: </label>
+        <input asp-for="LastName" class="form-control" type="text" placeholder="Last" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="birthday">Birthday: </label>
+        <input asp-for="Birthday" class="form-control" type="date" placeholder="1/1/1900" />
+        <span asp-validation-for="Birthday" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Email">Email: </label>
+        <input asp-for="Email" class="form-control" type="email" placeholder="a@b.c" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="birthday">Credit Card: </label>
+        <input asp-for="CreditCard" class="form-control" type="text" />
+        <span asp-validation-for="CreditCard" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="birthday">Amount: </label>
+        <input asp-for="Amount" class="form-control" type="number" />
+        <span asp-validation-for="Amount" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="birthday">Password: </label>
+        <input asp-for="Password" class="form-control" type="password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="birthday">Phone #: </label>
+        <input asp-for="PhoneNumber" class="form-control" type="text" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="birthday">Zip Code: </label>
+        <input asp-for="ZipCode" class="form-control" type="text" />
+        <span asp-validation-for="ZipCode" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="birthday">Time: </label>
+        <input asp-for="Time" class="form-control" type="time" />
+        <span asp-validation-for="Time" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Upload">Upload: </label>
+        <input asp-for="Upload" class="form-control" type="file" />
+        <span asp-validation-for="Upload" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Url">Url: </label>
+        <input asp-for="Url" class="form-control" type="url" />
+        <span asp-validation-for="Url" class="text-danger"></span>
+    </div>
+
+        <button class="btn btn-default" type="submit" value="Submit">Submit</button>
+</form>
