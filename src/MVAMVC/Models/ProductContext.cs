@@ -18,10 +18,25 @@ namespace MVAMVC.Models
                 .IsRequired()
                 .HasColumnName("CategoryID");
 
+            modelBuilder.Entity<Category>()
+                .Property(c => c.DisplayName)
+                .IsRequired();
+
             modelBuilder.Entity<Product>()
                 .Property(c => c.ProductId)
                 .IsRequired()
                 .HasColumnName("ProductID");
+
+            modelBuilder.Entity<Product>()
+                .Property(c => c.DisplayName)
+                .IsRequired();
+
+            //not required since the Product.cs defines CategoryID as nullable
+            //but good example of .IsRequired(required: false)
+            modelBuilder.Entity<Product>()
+                .Property(c => c.CategoryId)
+                .IsRequired(required: false )
+                .HasColumnName("CategoryID");            
         }
     }
 }

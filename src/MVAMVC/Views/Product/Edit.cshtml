@@ -1,0 +1,83 @@
+﻿@model MVAMVC.Models.Product
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>Product</h4>
+        <hr />
+        <div asp-validation-summary="ValidationSummary.All" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="ProductId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ProductId" class="form-control" disabled 
+                    data-toggle="tooltip" data-placement="right"
+                    title="Cannot Edit Primary Key!!!"/>
+                <span>@Html.HiddenFor(model => model.ProductId)</span>
+                <span asp-validation-for="ProductId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DisplayName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DisplayName" class="form-control" />
+                <span asp-validation-for="DisplayName" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CategoryId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="CategoryId" asp-items="(SelectList)@ViewData["Categories"]" class="form-control">
+                    <option value=""></option>
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="MSRP" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="MSRP" class="form-control" />
+                <span asp-validation-for="MSRP" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CurrentPrice" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CurrentPrice" class="form-control" />
+                <span asp-validation-for="CurrentPrice" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <textarea asp-for="Description" class="form-control " />@Model.Description</textarea>
+                <span asp-validation-for="Description" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>    
+}

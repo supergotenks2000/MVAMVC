@@ -1,0 +1,63 @@
+﻿@model MVAMVC.Models.Product
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+
+<div class="form-horizontal">
+    <h4>Product</h4>
+    <hr />
+    <div class="form-group">
+        <label asp-for="ProductId" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="ProductId" class="form-control" disabled
+                data-toggle="tooltip" data-placement="right"
+                title="Cannot Edit Primary Key!!!" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="DisplayName" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="DisplayName" class="form-control" disabled />
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="CategoryId" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <select asp-for="CategoryId" asp-items="(SelectList)@ViewData["Categories"]" class="form-control" disabled>
+                <option value=""></option>
+            </select>
+            <span asp-validation-for="CategoryId" class="text-danger" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="MSRP" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="MSRP" class="form-control" disabled />
+            <span asp-validation-for="MSRP" class="text-danger" />
+        </div>
+    </div><div class="form-group">
+        <label asp-for="CurrentPrice" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="CurrentPrice" class="form-control" disabled />
+            <span asp-validation-for="CurrentPrice" class="text-danger" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <textarea asp-for="Description" class="form-control " disabled />@Model.Description</textarea>
+        </div>
+    </div>
+
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>

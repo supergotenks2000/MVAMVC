@@ -8,9 +8,10 @@ using MVAMVC.Models;
 namespace MVAMVC.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    partial class ProductContextModelSnapshot : ModelSnapshot
+    [Migration("20160226160936_Nullables")]
+    partial class Nullables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
@@ -36,17 +37,17 @@ namespace MVAMVC.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("Relational:ColumnName", "ProductID");
 
-                    b.Property<int?>("CategoryId")
+                    b.Property<int>("CategoryId")
                         .HasAnnotation("Relational:ColumnName", "CategoryID");
 
-                    b.Property<decimal?>("CurrentPrice");
+                    b.Property<decimal>("CurrentPrice");
 
                     b.Property<string>("Description");
 
                     b.Property<string>("DisplayName")
                         .IsRequired();
 
-                    b.Property<decimal?>("MSRP");
+                    b.Property<decimal>("MSRP");
 
                     b.HasKey("ProductId");
                 });
