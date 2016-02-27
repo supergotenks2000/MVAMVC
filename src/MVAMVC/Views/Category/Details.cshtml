@@ -30,26 +30,33 @@
         </div>
     </div>
 
-    @*<dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CategoryId)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.DisplayName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.DisplayName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd>
-            <textarea asp-for="Description" class="form-control " disabled/>@Model.Description</textarea>
-        </dd>
-    </dl>*@
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayName("Product")
+            </th>
+            <th>
+                @Html.DisplayName("MSRP")
+            </th>
+            <th>
+                @Html.DisplayName("CurrentPrice")
+            </th>
+        </tr>
+        @foreach (var item in Model.Products.Distinct())
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DisplayName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MSRP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CurrentPrice)
+                </td>
+            </tr>
+        }
+    </table>
 </div>
 <p>
     <a asp-action="Edit" asp-route-id="@Model.CategoryId">Edit</a> |

@@ -125,7 +125,7 @@ namespace MVAMVC.Controllers
 
             _context.Products.Remove(product);
             _context.SaveChanges();
-
+           
             return RedirectToAction("Index");
 
         }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using MVAMVC.Models;
+using Microsoft.Data.Entity;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -40,6 +41,14 @@ namespace MVAMVC.Controllers
             }
 
             Category category = _context.Categories.Single(m => m.CategoryId == id);
+
+            var products = _context.Products.Where(p => p.CategoryId == category.CategoryId);
+            
+            category.Products.Clear();
+            foreach( var product in products )
+            {
+                category.Products.Add(product);
+            }
 
             if (category == null)
             {
